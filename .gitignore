@@ -12,6 +12,7 @@
 /src/main/webapp/userfiles/
 *.iml
 .idea
+/competency-java/target
 LICENSE
 *.ipr
 *.iws
