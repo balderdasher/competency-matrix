@@ -1,17 +1,16 @@
 package com.mrdios.competencymatrix.java.readingnotes.ThinkingInJava.chapter10;
 
 /**
- * @author huxiong
- * @date 2016/06/28 11:08
+ * Created by balderdasher on 2016/7/12.
  */
-public class DotThis {
+public class DoThis {
     public void f(){
         System.out.println("DotThis.f()");
     }
 
     public class Inner{
-        public DotThis outer(){
-            return DotThis.this;
+        public DoThis outer(){
+            return DoThis.this;
         }
     }
 
@@ -20,8 +19,8 @@ public class DotThis {
     }
 
     public static void main(String[] args) {
-        DotThis dt = new DotThis();
-        DotThis.Inner dti = dt.inner();
+        DoThis dt = new DoThis();
+        DoThis.Inner dti = dt.inner();
         dti.outer().f();
     }
 }
