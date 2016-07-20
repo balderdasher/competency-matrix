@@ -528,6 +528,140 @@ v|产生详细输出，描述jar所做的工作
 O|只存储文件，不压缩文件（用来创建一个可放在类路径中的JAR文件）
 M|不自动创建文件清单
 
+### 18.7 XML ###
+
+对象的序列化的一个限制是它只是java的解决方案：只有java程序才能反序列化这种对象。将数据转换为XML格式是另一种更具操作性的解决方案，可以使其被各种各样的平台和语言使用。
+
+LKZS：
+
+```java
+package com.mrdios.competencymatrix.java.readingnotes.ThinkingInJava.chapter18;
+
+import nu.xom.Document;
+import nu.xom.Element;
+import nu.xom.Serializer;
+
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * xml的使用:对象转换为xml
+ * Created by balderdasher on 2016/7/20.
+ */
+public class Person {
+    private String first, last;
+
+    public Person(String first, String last) {
+        this.first = first;
+        this.last = last;
+    }
+
+    // 从person对象产生xml元素
+    public Element getXML() {
+        Element person = new Element("person");
+        Element firstName = new Element("first");
+        firstName.appendChild(first);
+        Element lastName = new Element("last");
+        lastName.appendChild(last);
+        person.appendChild(firstName);
+        person.appendChild(lastName);
+        return person;
+    }
+
+    public Person(Element person) {
+        first = person.getFirstChildElement("first").getValue();
+        last = person.getFirstChildElement("last").getValue();
+    }
+
+    @Override
+    public String toString() {
+        return first + " " + last;
+    }
+
+    public static void format(OutputStream os, Document doc) throws Exception {
+        Serializer serializer = new Serializer(os, "ISO-8859-1");
+        serializer.setIndent(4);
+        serializer.setMaxLength(60);
+        serializer.write(doc);
+        serializer.flush();
+    }
+
+    public static void main(String[] args) throws Exception {
+        List<Person> person = Arrays.asList(
+                new Person("Dr.Bunsen", "Honeydew"),
+                new Person("Gonzo", "The Great"),
+                new Person("Phillip", "Fry")
+        );
+        System.out.println(person);
+        Element root = new Element("people");
+        for (Person p : person) {
+            root.appendChild(p.getXML());
+        }
+        Document doc = new Document(root);
+        format(System.out, doc);
+        format(new BufferedOutputStream(new FileOutputStream("People.xml")), doc);
+    }
+}
+```
+
+输出：
+
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<people>
+    <person>
+        <first>Dr.Bunsen</first>
+        <last>Honeydew</last>
+    </person>
+    <person>
+        <first>Gonzo</first>
+        <last>The Great</last>
+    </person>
+    <person>
+        <first>Phillip</first>
+        <last>Fry</last>
+    </person>
+</people>
+```
+
+从xml中反序列化对象：
+
+```java
+package com.mrdios.competencymatrix.java.readingnotes.ThinkingInJava.chapter18;
+
+import nu.xom.Builder;
+import nu.xom.Document;
+import nu.xom.Elements;
+
+import java.util.ArrayList;
+
+/**
+ * 从xml中反序列化对象
+ * Created by balderdasher on 2016/7/20.
+ */
+public class People extends ArrayList<Person> {
+    public People(String fileName) throws Exception {
+        Document doc = new Builder().build(fileName);
+        Elements elements = doc.getRootElement().getChildElements();
+        for (int i = 0;i<elements.size();i++){
+            add(new Person(elements.get(i)));
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        People p = new People("People.xml");
+        System.out.println(p);
+    }
+}
+
+输出：
+[Dr.Bunsen Honeydew, Gonzo The Great, Phillip Fry]
+```
+
+
 
 
 
