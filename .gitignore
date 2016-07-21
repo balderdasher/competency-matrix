@@ -4,6 +4,7 @@
 *.project
 *.war
 *.zip
+*.dat
 *.rar
 .settings/
 /indexes/
