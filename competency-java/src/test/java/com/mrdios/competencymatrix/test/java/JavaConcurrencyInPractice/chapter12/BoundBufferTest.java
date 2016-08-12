@@ -4,6 +4,9 @@ import com.mrdios.competencymatrix.java.readingnotes.JavaConcurrencyInPractice.c
 import com.mrdios.competencymatrix.test.java.base.BaseTest;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 基于信号量的有界缓存测试
  *
@@ -45,11 +48,14 @@ public class BoundBufferTest extends BaseTest {
         final BoundedBuffer<Integer> bb = new BoundedBuffer<>(10);
         // 放入缓存数据的线程,先等待5秒
         Thread putThread = new Thread(new Runnable() {
+            private int data = 2;
             @Override
             public void run() {
                 try {
+                    System.out.println("等待放入数据");
                     Thread.sleep(5000);
-                    bb.put(2);
+                    bb.put(data);
+                    System.out.println("结束放入数据：" + data);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -57,7 +63,8 @@ public class BoundBufferTest extends BaseTest {
         });
         putThread.start();
         Integer n = bb.take();
-        System.out.println(n);
+        System.out.println("取到放入数据：" + n);
+        Map<String,String> m = new HashMap<>();
     }
 
 }

@@ -102,7 +102,7 @@ public class BoundedBuffer<E> {
      */
     private synchronized E doExtract() {
         int i = takePosition;
-        E e = items[i]; // 去除元素
+        E e = items[i]; // 取出元素
         items[i] = null; // 从缓存中删除元素
         takePosition = (++i == items.length) ? 0 : 1;
         return e;
