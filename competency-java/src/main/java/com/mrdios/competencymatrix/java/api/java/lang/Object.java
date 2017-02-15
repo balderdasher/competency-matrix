@@ -1,13 +1,15 @@
-package com.mrdios.competencymatrix.java.readingnotes.java.lang;
+package com.mrdios.competencymatrix.java.api.java.lang;
 
 import org.junit.Test;
+
+import java.lang.Thread;
 
 /**
  * Created by balderdasher on 2016/8/11.
  */
 public class Object {
 
-    Boolean wait = true;
+    private final java.lang.Object monitorObj = new java.lang.Object();
 
     @Test
     public void testClone() {
@@ -66,7 +68,7 @@ public class Object {
     @Test
     public void testGetClass() {
         Object obj = new SubObject();
-        Class<? extends Object> c = obj.getClass();
+        java.lang.Class<? extends Object> c = obj.getClass();
         System.out.println(c.getSimpleName());
     }
 
@@ -92,92 +94,44 @@ public class Object {
      * 并不是被唤醒的这个线程就可以锁定这个对象
      * <p>
      * 此方法只能由该对象上监视器的所有者线程来调用，线程通过下面三个方法可以成为此对象监视器的所有者：
-     * 1、执行此对象上的同步方法
-     * 2、执行在此对象上进行同步的synchronized同步语句块
-     * 3、如果此对象是Class类型的，执行该类的静态同步方法
+     * 1.执行此对象上的同步方法
+     * 2.执行在此对象上进行同步的synchronized同步语句块
+     * 3.如果此对象是Class类型的，执行该类的静态同步方法
      * <p>
      * 一次只能有一个线程拥有对象的监视器
+     * 不能用Junit测试线程程序，因为Junit执行完方法就返回了不管线程的等待与通知等
      */
-    @Test
     public void testNotify() {
-        final Object obj = new Object();
+        Thread notify = new NotifyThread("notifyThread", false);
+        Thread wait = new WaitThread("waitThread1");
+        Thread wait2 = new WaitThread("waitThread2");
+        Thread wait3 = new WaitThread("waitThread3");
+        notify.start();
+        wait.start();
+        wait2.start();
+        wait3.start();
 
-        // 等待线程1
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    synchronized (obj) {
-                        while (obj.wait) {
-                            System.out.println(Thread.currentThread() + "在obj的监视器上等待");
-                            obj.wait();
-                        }
-                        System.out.println(Thread.currentThread() + "被唤醒");
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        t1.setName("Thread 1");
-
-        // 等待线程2
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    synchronized (obj) {
-                        while (obj.wait) {
-                            System.out.println(Thread.currentThread() + "在obj的监视器上等待");
-                            obj.wait();
-                        }
-                        System.out.println(Thread.currentThread() + "被唤醒");
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        t2.setName("Thread 2");
-
-        // 唤醒线程
-        Thread t3 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    System.out.println(Thread.currentThread() + "3秒后在obj调用notify()方法唤醒一个在obj的监视器上等待的线程");
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                synchronized (obj) {
-                    obj.wait = false;
-                    obj.notify();
-                }
-            }
-        });
-        t3.setName("Thread 3");
-
-        t3.start();
-        t1.start();
-        t2.start();
     }
 
-    @Test
+    /**
+     * nofityAll:和notify()用于唤醒在对象监视器上等待的所有线程，这些被唤醒的线程也需要竞争执行权力
+     */
     public void testNotifyAll() {
-        NotifyThread notify = new NotifyThread("notify");
+        NotifyThread notify = new NotifyThread("notify", true);
         WaitThread wait01 = new WaitThread("wait01");
         WaitThread wait02 = new WaitThread("wait02");
+        WaitThread wait03 = new WaitThread("wait03");
         notify.start();
         wait01.start();
         wait02.start();
+        wait03.start();
     }
 
-    class NotImpClonable {
+    private class NotImpClonable {
         String s;
     }
 
-    class ImpCloneable implements Cloneable {
+    private class ImpCloneable implements Cloneable {
         String s;
 
         @Override
@@ -186,15 +140,16 @@ public class Object {
         }
     }
 
-    class SubObject extends Object {
+    private class SubObject extends Object {
 
     }
 
-    private String flag[] = {"true"};
+    private class NotifyThread extends Thread {
+        boolean isNotifyAll;
 
-    class NotifyThread extends Thread {
-        public NotifyThread(String name) {
+        public NotifyThread(String name, boolean isNotifyAll) {
             super(name);
+            this.isNotifyAll = isNotifyAll;
         }
 
         public void run() {
@@ -203,33 +158,37 @@ public class Object {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            synchronized (flag) {
-                flag[0] = "false";
-                flag.notifyAll();
+            long waitTime = System.currentTimeMillis();
+            synchronized (monitorObj) {
+                System.out.println(getName() + " has " + (isNotifyAll ? "notifyAll" : "notify") + " and begin to wait");
+                if (isNotifyAll) {
+                    monitorObj.notifyAll();
+                } else {
+                    monitorObj.notify();
+                }
             }
+            System.out.println(getName() + " end waiting! wait time: " + (System.currentTimeMillis() - waitTime));
         }
     }
 
-    class WaitThread extends Thread {
+    private class WaitThread extends Thread {
         public WaitThread(String name) {
             super(name);
         }
 
         public void run() {
-            synchronized (flag) {
-                while (flag[0] != "false") {
-                    System.out.println(getName() + " begin waiting!");
-                    long waitTime = System.currentTimeMillis();
-                    try {
-                        flag.wait();
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    waitTime = System.currentTimeMillis() - waitTime;
-                    System.out.println("wait time :" + waitTime);
+            synchronized (monitorObj) {
+                System.out.println(getName() + " begin waiting!");
+                long waitTime = System.currentTimeMillis();
+                try {
+                    monitorObj.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                System.out.println(getName() + " end waiting!");
+                waitTime = System.currentTimeMillis() - waitTime;
+                System.out.println(getName() + " end waiting!wait time :" + waitTime);
+                System.out.println(getName() + " begin to notify");
+                monitorObj.notify();
             }
         }
     }
@@ -237,5 +196,12 @@ public class Object {
     @Override
     protected void finalize() throws Throwable {
         System.out.println("引用不存在了，执行垃圾清理");
+        super.finalize();
+    }
+
+    public static void main(String[] args) {
+        Object object = new Object();
+//        object.testNotify();
+        object.testNotifyAll();
     }
 }

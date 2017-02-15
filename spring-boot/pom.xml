@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-boot</artifactId>
+    <packaging>jar</packaging>
+    <name>spring-boot</name>
+
+    <parent>
+        <artifactId>competency-matrix</artifactId>
+        <groupId>com.mrdios.competencymatrix</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <spring.boot.version>1.4.2.RELEASE</spring.boot.version>
+    </properties>
+
+    <!-- example -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <!-- 生产环境运维支持 -->
+        <!-- 提供以下http服务
+            =名称=	=说明=	=是否包含敏感信息=
+            autoconfig	显示 Spring Boot 自动配置的信息。	是
+            beans	显示应用中包含的 Spring bean 的信息。	是
+            configprops	显示应用中的配置参数的实际值。	是
+            dump	生成一个 thread dump。	是
+            env	显示从 ConfigurableEnvironment 得到的环境配置信息。	是
+            health	显示应用的健康状态信息。	否
+            info	显示应用的基本信息。	否
+            metrics	显示应用的性能指标。	是
+            mappings	显示 Spring MVC 应用中通过“
+            @RequestMapping”添加的路径映射。	是
+            shutdown	关闭应用。	是
+            trace	显示应用相关的跟踪（trace）信息。	是
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- web开发支持 -->
+    <!--<dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${spring.boot.version}</version>
+            <scope>jar</scope>
+        </dependency>
+        &lt;!&ndash; 生产环境运维支持 &ndash;&gt;
+        &lt;!&ndash; 提供以下http服务
+            =名称=	=说明=	=是否包含敏感信息=
+            autoconfig	显示 Spring Boot 自动配置的信息。	是
+            beans	显示应用中包含的 Spring bean 的信息。	是
+            configprops	显示应用中的配置参数的实际值。	是
+            dump	生成一个 thread dump。	是
+            env	显示从 ConfigurableEnvironment 得到的环境配置信息。	是
+            health	显示应用的健康状态信息。	否
+            info	显示应用的基本信息。	否
+            metrics	显示应用的性能指标。	是
+            mappings	显示 Spring MVC 应用中通过“
+            @RequestMapping”添加的路径映射。	是
+            shutdown	关闭应用。	是
+            trace	显示应用相关的跟踪（trace）信息。	是
+        &ndash;&gt;
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+        &lt;!&ndash;thymeleaf模板引擎 &ndash;&gt;
+        &lt;!&ndash;<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>&ndash;&gt;
+
+        &lt;!&ndash; freemarker模板引擎 &ndash;&gt;
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+    </dependencies>-->
+
+    <build>
+        <finalName>spring-boot</finalName>
+        <!-- Package as an executable jar -->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+            </plugin>
+
+            <!-- war 打包插件, 设定war包名称不带版本号 -->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <warName>${project.artifactId}</warName>
+                </configuration>
+            </plugin>-->
+        </plugins>
+    </build>
+
+</project>
