@@ -16,7 +16,7 @@ public abstract class Game {
     /**
      * 模板方法，用于确定解决一个问题的顺序，不允许子类重写，子类可以重写模板方法中所调用的具体步骤方法
      */
-    public final void play() {
+    final void play() {
         init();
         startPlay();
         endPlay();
