@@ -1,4 +1,4 @@
-package com.mrdios.competencymatrix.test.java.base;
+package base;
 
 /**
  * Junit单元测试基类

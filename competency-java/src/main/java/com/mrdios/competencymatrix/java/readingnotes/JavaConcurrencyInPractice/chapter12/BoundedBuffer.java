@@ -71,6 +71,12 @@ public class BoundedBuffer<E> {
         availableItems.release();
     }
 
+    private synchronized void doInsert(E e) {
+        int i = putPosition;
+        items[i] = e;
+        putPosition = (++i == items.length) ? 0 : 1;
+    }
+
     /**
      * 删除元素
      *
@@ -84,22 +90,6 @@ public class BoundedBuffer<E> {
         return item;
     }
 
-    /**
-     * 缓存中插入元素
-     *
-     * @param e
-     */
-    private synchronized void doInsert(E e) {
-        int i = putPosition;
-        items[i] = e;
-        putPosition = (++i == items.length) ? 0 : 1;
-    }
-
-    /**
-     * 从缓存中取出元素
-     *
-     * @return
-     */
     private synchronized E doExtract() {
         int i = takePosition;
         E e = items[i]; // 取出元素

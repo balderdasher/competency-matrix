@@ -12,6 +12,7 @@
         <module>competency-java</module>
         <module>spring-boot</module>
         <module>design-pattern</module>
+        <module>apache-shiro</module>
     </modules>
 
     <!-- 项目属性 -->

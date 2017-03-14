@@ -1,7 +1,7 @@
-package com.mrdios.competencymatrix.test.java.JavaConcurrencyInPractice.chapter12;
+package com.mrdios.competencymatrix.java.JavaConcurrencyInPractice.chapter12;
 
+import base.BaseTest;
 import com.mrdios.competencymatrix.java.readingnotes.JavaConcurrencyInPractice.chapter12.BoundedBuffer;
-import com.mrdios.competencymatrix.test.java.base.BaseTest;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -27,6 +27,7 @@ public class BoundBufferTest extends BaseTest {
 
     /**
      * 测试缓存填满
+     *
      * @throws InterruptedException
      */
     @Test
@@ -41,14 +42,16 @@ public class BoundBufferTest extends BaseTest {
 
     /**
      * 测试从空缓存中take，请求将一直阻塞
+     *
      * @throws InterruptedException
      */
     @Test
-    public void testTake() throws InterruptedException{
+    public void testTake() throws InterruptedException {
         final BoundedBuffer<Integer> bb = new BoundedBuffer<>(10);
         // 放入缓存数据的线程,先等待5秒
         Thread putThread = new Thread(new Runnable() {
             private int data = 2;
+
             @Override
             public void run() {
                 try {
@@ -64,7 +67,6 @@ public class BoundBufferTest extends BaseTest {
         putThread.start();
         Integer n = bb.take();
         System.out.println("取到放入数据：" + n);
-        Map<String,String> m = new HashMap<>();
     }
 
 }
