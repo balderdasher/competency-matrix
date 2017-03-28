@@ -13,6 +13,8 @@
         <module>spring-boot</module>
         <module>design-pattern</module>
         <module>apache-shiro</module>
+        <module>algorithm</module>
+        <module>concurrency</module>
     </modules>
 
     <!-- 项目属性 -->
