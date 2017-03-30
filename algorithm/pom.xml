@@ -11,5 +11,14 @@
 
     <artifactId>algorithm</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>edu.princeton.cs.algs4</groupId>
+            <artifactId>algs4</artifactId>
+            <systemPath>${project.basedir}/lib/algs4.jar</systemPath>
+            <scope>system</scope>
+        </dependency>
+    </dependencies>
+
 
 </project>
