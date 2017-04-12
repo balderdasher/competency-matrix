@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
  */
 public class ResizingArrayStack<E> implements Iterable<E> {
     private E[] items;   // 栈中元素
-    private int size;       // 元素数量
+    private int size;    // 元素数量
 
     /**
      * 创建一个空栈

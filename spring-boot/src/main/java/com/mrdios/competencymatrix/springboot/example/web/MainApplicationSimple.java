@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author huxiong
  * @date 2016-11-24 16:27
  */
-@SpringBootApplication
-@RestController
+//@SpringBootApplication
+//@RestController
 public class MainApplicationSimple {
     private static SpringApplication app;
 

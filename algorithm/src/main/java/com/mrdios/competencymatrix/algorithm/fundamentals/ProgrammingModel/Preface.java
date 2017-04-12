@@ -9,7 +9,7 @@ package com.mrdios.competencymatrix.algorithm.fundamentals.ProgrammingModel;
 public class Preface {
 
     /**
-     * 求两个非负整数的最大公约数的计算机程序算法
+     * 求两个非负整数的最大公约数的计算机程序算法--欧几里得算法
      *
      * @param p 非负整数p
      * @param q 非负整数q

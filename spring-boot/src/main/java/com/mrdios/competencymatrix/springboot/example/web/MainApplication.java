@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author huxiong
  * @date 2016-11-24 16:27
  */
-//@SpringBootApplication
+@SpringBootApplication
 public class MainApplication extends SpringBootServletInitializer {
     private static SpringApplication app;
 

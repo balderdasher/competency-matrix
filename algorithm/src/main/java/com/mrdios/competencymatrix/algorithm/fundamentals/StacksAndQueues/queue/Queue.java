@@ -65,7 +65,7 @@ public class Queue<Item> implements Iterable<Item> {
 
 
     /**
-     * 删除最近添加的元素
+     * 出列
      *
      * @return item
      */
