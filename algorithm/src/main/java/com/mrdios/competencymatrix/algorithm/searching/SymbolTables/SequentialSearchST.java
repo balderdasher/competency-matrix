@@ -1,5 +1,7 @@
 package com.mrdios.competencymatrix.algorithm.searching.SymbolTables;
 
+import com.mrdios.competencymatrix.algorithm.fundamentals.StacksAndQueues.queue.Queue;
+
 /**
  * 顺序查找(基于无序链表)
  *
@@ -40,6 +42,19 @@ public class SequentialSearchST<Key, Value> {
     }
 
     /**
+     * 是否包含某个键
+     *
+     * @param key key
+     * @return true or false
+     */
+    public boolean contanis(Key key) {
+        if (key == null) {
+            throw new IllegalArgumentException("argument to contains() is null");
+        }
+        return get(key) != null;
+    }
+
+    /**
      * 查找给定的键，找到则更新值，否则新建结点
      *
      * @param key   key
@@ -71,5 +86,18 @@ public class SequentialSearchST<Key, Value> {
             }
         }
         return null;    // 未命中
+    }
+
+    /**
+     * 返回所有键
+     *
+     * @return all keys
+     */
+    public Iterable<Key> keys() {
+        Queue<Key> keys = new Queue<>();
+        for (Node x = first; x != null; x = x.next) {
+            keys.enqueue(x.key);
+        }
+        return keys;
     }
 }
