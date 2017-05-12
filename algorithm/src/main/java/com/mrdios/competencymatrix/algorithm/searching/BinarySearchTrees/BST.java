@@ -52,6 +52,16 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /**
+     * 是否包含给定键值
+     *
+     * @param key key
+     * @return true or false
+     */
+    public boolean contains(Key key) {
+        return get(key) != null;
+    }
+
+    /**
      * 获取键值
      *
      * @param key 搜索键
