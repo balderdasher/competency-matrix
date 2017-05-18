@@ -14,7 +14,7 @@ Author URI: http://pagecho.com
 body {
     background-color: #FFF;
     color: #444;
-    font-family: "TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
+    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
 }
@@ -43,11 +43,12 @@ code, tt {
     margin: 0 0px;
     padding: 2px 4px;
     color: #c7254e;
-    font-size: 90%;
+    font-size: 1em;
     white-space: nowrap;
-    border: 1px solid #dddddd;
-    background-color: #f6f6f6;
+    background-color: #fbfbfb;
+    border: 1px solid #e1e1e8;
     border-radius: 3px;
+    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 pre {
