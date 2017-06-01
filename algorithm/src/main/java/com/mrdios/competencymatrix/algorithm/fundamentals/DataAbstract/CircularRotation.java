@@ -24,4 +24,7 @@ public class CircularRotation {
         return (s + s).indexOf(t) > 0 && (t + t).indexOf(s) > 0;
     }
 
+    public static void main(String[] args) {
+        System.out.println(isCircularRotation("ACTGACG", "TGACGCA"));
+    }
 }

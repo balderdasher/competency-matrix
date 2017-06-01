@@ -126,7 +126,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
         n--;
         // 回收游离对象
         keys[n] = null;
-        keys[n] = null;
+        vals[n] = null;
 
         // 收缩容量
         if (n > 0 && n == keys.length / 4) {
