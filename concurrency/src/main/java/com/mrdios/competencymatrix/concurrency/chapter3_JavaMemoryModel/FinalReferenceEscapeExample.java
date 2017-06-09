@@ -1,0 +1,27 @@
+package com.mrdios.competencymatrix.concurrency.chapter3_JavaMemoryModel;
+
+/**
+ * final引用不能从构造函数逸出
+ *
+ * @author MrDios
+ * @date 2017-06-09
+ */
+public class FinalReferenceEscapeExample {
+    final int i;
+    static FinalReferenceEscapeExample obj;
+
+    public FinalReferenceEscapeExample() {
+        i = 1;          // 1 写final域
+        obj = this;     // 2 this引用在此“逸出”
+    }
+
+    public static void writer() {
+        new FinalReferenceEscapeExample();
+    }
+
+    public static void reader() {
+        if (obj != null) {      // 3
+            int temp = obj.i;   // 4
+        }
+    }
+}
