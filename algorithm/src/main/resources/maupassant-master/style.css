@@ -73,6 +73,13 @@ h1, h2, h3 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.post-content .more-link {
+    display: block;
+    text-align: right;
+    border-bottom: 1px dashed #ddd;
+    font-style: italic;
+}
+
 input[type="text"], input[type="email"], input[type="url"], input[type="password"], textarea {
     padding: 5px;
     border: 1px solid #ddd;
@@ -530,10 +537,40 @@ textarea.textarea {
     line-height: 1.5;
 }
 
-#footer {
+footer {
+    background: #444855;
+    color: #d6d6d6;
+    border: none;
+    position: relative;
     padding: .1em 0 3.6em;
     line-height: 1.5;
-    color: #999;
+}
+
+footer a {
+    color: #d6d6d6;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer .footer-tips {
+    margin: 0;
+    height: auto;
+    line-height: normal;
+    padding: 24px 0;
+    border-top: none;
+}
+
+footer p {
+    clear: both;
+    text-align: center;
+    font-size: 12px;
+    border-top: 1px solid #656973;
+    height: 80px;
+    line-height: 80px;
+    color: #ebebeb;
+    margin-top: 0;
 }
 
 .error-page {

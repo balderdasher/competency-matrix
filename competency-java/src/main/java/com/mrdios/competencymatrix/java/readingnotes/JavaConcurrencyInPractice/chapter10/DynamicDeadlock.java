@@ -32,7 +32,9 @@ public class DynamicDeadlock {
         }
     }
 
-    /** 当两个对象拥有相同的散列值时使用的加时赛锁 **/
+    /**
+     * 当两个对象拥有相同的散列值时使用的加时赛锁
+     **/
     private static final Object tieLock = new Object();
 
     /**
@@ -98,7 +100,8 @@ public class DynamicDeadlock {
          * 转出
          *
          * @param amount
-         */        public void debit(int amount) {
+         */
+        public void debit(int amount) {
             this.setBalance(getBalance() - amount);
         }
 
