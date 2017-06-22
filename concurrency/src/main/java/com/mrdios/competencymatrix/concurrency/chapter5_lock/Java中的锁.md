@@ -26,7 +26,7 @@ Lock接口有一些`synchronized`关键字所不具备的特性，如下表：
 特性|描述
 ---|---
 尝试非阻塞地获取锁|当前线程尝试获取锁，如果这一时刻锁没有被其他线程获取到，则成功获取并持有锁
-能被中断地获取锁|与`synchronized`不同，获取到锁的线程能够相应中断，当获取到锁的线程被中断时，中断异常将被抛出，同时锁会被释放
+能被中断地获取锁|与`synchronized`不同，获取到锁的线程能够响应中断，当获取到锁的线程被中断时，中断异常将被抛出，同时锁会被释放
 超时获取锁|在指定的截止时间之前获取锁，如果截止时间到哦仍旧无法获取锁，则返回
 
 Lock接口定义了获取和释放锁的基本操作，API如下所示：
@@ -36,7 +36,7 @@ Lock接口定义了获取和释放锁的基本操作，API如下所示：
 void lock()|获取锁，调用该方法当前线程将会获取锁，当获得锁后从该方法返回
 void lockInterruptibly() throws InterruptedException|可中断地获取锁，和`lock()`不同之处在于该方法会响应中断，即在锁的获取中可以中断当前线程
 boolean tryLock()|尝试非阻塞的获取锁，调用该方法后立刻返回，如果能够获取则返回`true`，否则返回`false`
-boolean tryLock(long time,TimeUnit unit) throws InterruptedException|超时获取锁，当前线程在以下3中情况下会返回<br>1. 当前线程在超时时间内获得了锁<br>2. 当前线程在超时时间<br>3. 超时时间结束，返回`false`
+boolean tryLock(long time,TimeUnit unit) throws InterruptedException|超时获取锁，当前线程在以下3中情况下会返回<br>1. 当前线程在超时时间内获得了锁<br>2. 当前线程在超时时间内被中断<br>3. 超时时间结束，返回`false`
 void unlock()|释放锁
 Condition newCondition()|获取等待通知组件，该组件和当前的锁绑定，当前线程只有获得了锁，才能调用该组件的`wait()`方法，而调用后，当前线程将释放锁
 

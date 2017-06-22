@@ -25,7 +25,7 @@ public class BoundedQueue<E> {
     }
 
     /**
-     * 添加元素：如果数组满，则添加线程进入等待状态，知道有“空位”
+     * 添加元素：如果数组满，则添加线程进入等待状态，直到有“空位”
      *
      * @param e element
      * @throws InterruptedException

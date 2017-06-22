@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LockUserCase {
     public static void useLock() {
         Lock lock = new ReentrantLock();
-        lock.lock();            // 锁住
+        lock.lock();            // 锁住,不能写在try块内
         try {
             // doSomething
         } finally {
