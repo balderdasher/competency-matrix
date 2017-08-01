@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="info">
+
+    <Properties>
+        <Property name="logdir">logs</Property>
+    </Properties>
+    <Appenders>
+        <!-- 定义控制台输出 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss}, %p, %c{30}:%L, %t, %m%n"/>
+        </Console>
+    </Appenders>
+</Configuration>

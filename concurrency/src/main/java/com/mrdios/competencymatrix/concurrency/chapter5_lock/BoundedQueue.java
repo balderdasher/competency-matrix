@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 使用Condition接口实现的有界队列
  *
  * @author MrDios
- * @date 2017-06-20
+ * @date 2017-06-20co
  */
 public class BoundedQueue<E> {
     private E[] items;      // 队列中的元素
@@ -23,6 +23,7 @@ public class BoundedQueue<E> {
     public BoundedQueue(int size) {
         items = (E[]) new Object[size];
     }
+
 
     /**
      * 添加元素：如果数组满，则添加线程进入等待状态，直到有“空位”
