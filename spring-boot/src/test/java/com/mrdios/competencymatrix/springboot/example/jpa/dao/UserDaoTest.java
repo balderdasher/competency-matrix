@@ -1,20 +1,16 @@
-package com.mrdios.competencymatrix.springboot.example.web.jpa.dao;
+package com.mrdios.competencymatrix.springboot.example.jpa.dao;
 
-import com.mrdios.competencymatrix.springboot.example.web.MainApplication;
-import com.mrdios.competencymatrix.springboot.example.web.jpa.entity.User;
+import com.mrdios.competencymatrix.springboot.example.MainApplication;
+import com.mrdios.competencymatrix.springboot.example.jpa.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.web.config.SpringDataWebConfigurationMixin;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.text.DateFormat;
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * jpa测试

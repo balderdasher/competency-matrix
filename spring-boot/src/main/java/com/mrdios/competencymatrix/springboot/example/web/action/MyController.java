@@ -1,4 +1,4 @@
-package com.mrdios.competencymatrix.springboot.example.web.controller;
+package com.mrdios.competencymatrix.springboot.example.web.action;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import java.util.Map;
  * @date 2016-11-29 17:23
  */
 @Controller
-@RequestMapping("/test")
+@RequestMapping("/web")
 public class MyController {
 
     @Value("${info.app_name}")

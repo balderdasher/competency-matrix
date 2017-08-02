@@ -17,7 +17,7 @@ public class RequestAccessFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        System.out.println("Access request ip: " + req.getRequestURI());
+        System.out.println("Access request url: " + req.getRequestURI() + "[" + req.getRemoteAddr() + "]");
         chain.doFilter(request, response);
     }
 

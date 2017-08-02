@@ -1,4 +1,4 @@
-package com.mrdios.competencymatrix.springboot.example.web.jpa.entity;
+package com.mrdios.competencymatrix.springboot.example.jpa.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

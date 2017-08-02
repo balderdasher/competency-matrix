@@ -16,43 +16,8 @@
         <spring.boot.version>1.4.2.RELEASE</spring.boot.version>
     </properties>
 
-    <!-- example -->
-    <!--<dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-            <version>${spring.boot.version}</version>
-        </dependency>
-        &lt;!&ndash; 生产环境运维支持 &ndash;&gt;
-        &lt;!&ndash; 提供以下http服务
-            =名称=	=说明=	=是否包含敏感信息=
-            autoconfig	显示 Spring Boot 自动配置的信息。	是
-            beans	显示应用中包含的 Spring bean 的信息。	是
-            configprops	显示应用中的配置参数的实际值。	是
-            dump	生成一个 thread dump。	是
-            env	显示从 ConfigurableEnvironment 得到的环境配置信息。	是
-            health	显示应用的健康状态信息。	否
-            info	显示应用的基本信息。	否
-            metrics	显示应用的性能指标。	是
-            mappings	显示 Spring MVC 应用中通过“
-            @RequestMapping”添加的路径映射。	是
-            shutdown	关闭应用。	是
-            trace	显示应用相关的跟踪（trace）信息。	是
-        &ndash;&gt;
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>${spring.boot.version}</version>
-        </dependency>
-    </dependencies>-->
-
     <dependencies>
-        <!-- test -->
+        <!-- spring-boot-test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -101,14 +66,12 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
-
         <!--thymeleaf模板引擎 -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>${spring.boot.version}</version>
-        </dependency>-->
-
+        </dependency>
         <!-- freemarker模板引擎 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -125,6 +88,24 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.38</version>
+        </dependency>
+        <!-- spring-boot-redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <!-- 分布式系统中的session共享 -->
+        <!--<dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+            <version>1.0.2.RELEASE</version>
+        </dependency>-->
+        <!-- log4j-web -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>2.1</version>
         </dependency>
     </dependencies>
 
