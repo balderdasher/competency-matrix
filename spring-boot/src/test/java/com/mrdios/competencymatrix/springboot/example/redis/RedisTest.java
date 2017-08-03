@@ -52,7 +52,7 @@ public class RedisTest {
 
     @Test
     public void testGet() throws Exception {
-        User user = (User) redisTemplate.opsForValue().get("com.mrdios");
+        User user = (User) redisTemplate.opsForValue().get("testkey");
         System.out.println(user);
     }
 }

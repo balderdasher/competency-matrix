@@ -96,11 +96,11 @@
             <version>${spring.boot.version}</version>
         </dependency>
         <!-- 分布式系统中的session共享 -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
             <version>1.0.2.RELEASE</version>
-        </dependency>-->
+        </dependency>
         <!-- log4j-web -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
