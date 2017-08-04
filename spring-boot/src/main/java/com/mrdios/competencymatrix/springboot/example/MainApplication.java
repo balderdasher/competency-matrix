@@ -1,5 +1,6 @@
 package com.mrdios.competencymatrix.springboot.example;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * @date 2016-11-24 16:27
  */
 @SpringBootApplication
+@MapperScan("com.mrdios.competencymatrix.springboot.example.mybatis.*mapper")
 public class MainApplication extends SpringBootServletInitializer {
     private static SpringApplication app;
 
