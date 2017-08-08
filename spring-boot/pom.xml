@@ -113,6 +113,12 @@
             <artifactId>spring-boot-starter-amqp</artifactId>
             <version>1.5.6.RELEASE</version>
         </dependency>
+        <!-- 定时任务 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
         <!-- log4j-web -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

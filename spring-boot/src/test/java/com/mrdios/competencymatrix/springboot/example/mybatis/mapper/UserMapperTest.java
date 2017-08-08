@@ -1,6 +1,6 @@
 package com.mrdios.competencymatrix.springboot.example.mybatis.mapper;
 
-import com.mrdios.competencymatrix.springboot.example.MainApplication;
+import com.mrdios.competencymatrix.springboot.example.Application;
 import com.mrdios.competencymatrix.springboot.example.mybatis.entity.UserEntity;
 import com.mrdios.competencymatrix.springboot.example.mybatis.enums.Sex;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * @date 2017-08-04
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = MainApplication.class)
+@SpringBootTest(classes = Application.class)
 public class UserMapperTest {
     @Autowired
     private UserMapper userMapper;

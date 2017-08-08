@@ -6,16 +6,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * SpringBootApplication注解相当于@Configuration, @EnableAutoConfiguration 和 @ComponentScan合用
+ * @EnableScheduling启用定时
  *
  * @author huxiong
  * @date 2016-11-24 16:27
  */
 @SpringBootApplication
+@EnableScheduling
 @MapperScan("com.mrdios.competencymatrix.springboot.example.mybatis.*mapper")
-public class MainApplication extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
     private static SpringApplication app;
 
     public static void main(String[] args) {
@@ -28,7 +31,7 @@ public class MainApplication extends SpringBootServletInitializer {
 //        app.run(args);
         // 链式api
         new SpringApplicationBuilder()
-                .sources(MainApplication.class)
+                .sources(Application.class)
                 .bannerMode(Banner.Mode.LOG)
                 .run(args);
 

@@ -1,6 +1,6 @@
 package com.mrdios.competencymatrix.springboot.example.jpa.dao;
 
-import com.mrdios.competencymatrix.springboot.example.MainApplication;
+import com.mrdios.competencymatrix.springboot.example.Application;
 import com.mrdios.competencymatrix.springboot.example.jpa.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import java.util.Date;
  * @date 2017-08-01
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = MainApplication.class)
+@SpringBootTest(classes = Application.class)
 public class UserDaoTest {
 
     @Autowired

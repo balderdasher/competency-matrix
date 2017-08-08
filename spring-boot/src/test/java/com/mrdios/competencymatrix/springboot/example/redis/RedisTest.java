@@ -1,7 +1,7 @@
 package com.mrdios.competencymatrix.springboot.example.redis;
 
 import com.mrdios.competencymatrix.springboot.example.jpa.entity.User;
-import com.mrdios.competencymatrix.springboot.example.MainApplication;
+import com.mrdios.competencymatrix.springboot.example.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
  * @date 2017-08-02
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = MainApplication.class)
+@SpringBootTest(classes = Application.class)
 public class RedisTest {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
