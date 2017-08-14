@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+</head>
+<body>
+<h1>welcome</h1>
+Date: ${time?date}
+<br>
+Time: ${time?time}
+<br>
+Message: ${message}
+<br>
+<br>
+<input type="button" id="logout" value="退出登录"/>
+</body>
+<script src="js/jquery/jquery-1.9.1.js" type="text/javascript"></script>
+<script>
+    $("#logout").click(function () {
+        location.href = "/logout";
+    });
+    document.addEventListener("visibilitychange", function () {
+        var isHidden = document.hidden;
+        if (isHidden) {
+            document.title = "小帅哥快来嫖娼啊";
+        } else {
+            document.title = "哎哟稀客啊";
+        }
+    })
+</script>
+</html>

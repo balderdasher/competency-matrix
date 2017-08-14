@@ -66,6 +66,14 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+        <!-- 热部署 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <version>${spring.boot.version}</version>
+            <optional>true</optional>
+            <scope>true</scope>
+        </dependency>
         <!--thymeleaf模板引擎 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -125,6 +133,12 @@
             <artifactId>spring-boot-starter-mail</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+        <!-- apache shiro-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.4.0</version>
+        </dependency>
         <!-- log4j-web -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -141,6 +155,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
+                <!-- 热部署配置 -->
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
             </plugin>
 
             <!-- war 打包插件, 设定war包名称不带版本号 -->

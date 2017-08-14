@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+<h4 id="erro">${msg!}</h4>
+<form action="/login" method="post">
+    <p>
+        <label for="username">账号：</label><input name="username" id="username" value="admin"/>
+    </p>
+    <p>
+        <label for="password">密码：</label><input type="password" name="password" id="password" value="123"/>
+    </p>
+    <p>
+        <input type="submit" id="login" value="登录"/>
+    </p>
+</form>
+</body>
+</html>
