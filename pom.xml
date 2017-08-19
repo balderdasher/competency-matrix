@@ -14,6 +14,7 @@
         <module>design-pattern</module>
         <module>algorithm</module>
         <module>concurrency</module>
+        <module>java8-feature</module>
     </modules>
 
     <!-- 项目属性 -->
