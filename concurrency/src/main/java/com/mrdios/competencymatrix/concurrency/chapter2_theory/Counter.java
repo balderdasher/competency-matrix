@@ -1,6 +1,7 @@
 package com.mrdios.competencymatrix.concurrency.chapter2_theory;
 
-import org.springframework.util.StopWatch;
+
+import com.mrdios.competencymatrix.concurrency.util.StopWatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,6 @@ public class Counter {
         final Counter cas = new Counter();
         List<Thread> ts = new ArrayList<>(600);
         StopWatch watch = new StopWatch();
-        watch.start();
         for (int i = 0; i < 100; i++) {
             Thread t = new Thread(new Runnable() {
                 @Override
@@ -60,8 +60,7 @@ public class Counter {
                 e.printStackTrace();
             }
         }
-        watch.stop();
-        long time = watch.getTotalTimeMillis();
+        double time = watch.elapsedTime();
         System.out.println(cas.i);
         System.out.println(cas.atomicInteger.get());
         System.out.println(time + "ms");

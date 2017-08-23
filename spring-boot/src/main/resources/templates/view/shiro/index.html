@@ -20,12 +20,16 @@ Message: ${message}
     $("#logout").click(function () {
         location.href = "/logout";
     });
+    var oldTitle = document.title;
     document.addEventListener("visibilitychange", function () {
         var isHidden = document.hidden;
         if (isHidden) {
             document.title = "小帅哥快来嫖娼啊";
         } else {
             document.title = "哎哟稀客啊";
+            setTimeout(function () {
+                document.title = oldTitle;
+            }, 500);
         }
     })
 </script>

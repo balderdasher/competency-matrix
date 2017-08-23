@@ -23,7 +23,7 @@ public class ShapFactory extends AbstractShapAndColorFactory {
             case "SQUARE":
                 return new Square();
             default:
-                return null;
+                throw new IllegalArgumentException("invalid shape:" + shapeType);
         }
     }
 

@@ -1,6 +1,6 @@
 package com.mrdios.competencymatrix.concurrency.chapter1_chanllenge;
 
-import org.springframework.util.StopWatch;
+import com.mrdios.competencymatrix.concurrency.util.StopWatch;
 
 /**
  * 多线程就一定快吗？
@@ -13,7 +13,6 @@ public class ConcurrencyTest {
     // 并发
     private static void concurrency(final long count) throws InterruptedException {
         StopWatch watch = new StopWatch("concurrency");
-        watch.start();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -28,8 +27,7 @@ public class ConcurrencyTest {
         for (long i = 0; i < count; i++) {
             b--;
         }
-        watch.stop();
-        long time = watch.getTotalTimeMillis();
+        double time = watch.elapsedTime();
         thread.join();
         System.out.println("concurrency :" + time + "ms,b=" + b);
     }
@@ -37,7 +35,6 @@ public class ConcurrencyTest {
     // 串行
     private static void serial(long count) {
         StopWatch watch = new StopWatch("serial");
-        watch.start();
         int a = 0;
         for (long i = 0; i < count; i++) {
             a += 5;
@@ -46,8 +43,7 @@ public class ConcurrencyTest {
         for (long i = 0; i < count; i++) {
             b--;
         }
-        watch.stop();
-        long time = watch.getTotalTimeMillis();
+        double time = watch.elapsedTime();
         System.out.println("serial:" + time + "ms,b=" + b + ",a=" + a);
     }
 

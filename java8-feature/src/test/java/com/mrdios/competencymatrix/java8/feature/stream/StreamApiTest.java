@@ -1,9 +1,9 @@
 package com.mrdios.competencymatrix.java8.feature.stream;
 
+import com.mrdios.competencymatrix.java8.feature.util.StopWatch;
 import junit.framework.TestCase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.StopWatch;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -93,25 +93,21 @@ public class StreamApiTest extends TestCase {
             list.add(random.nextInt(10000000));
         }
         StopWatch timer = new StopWatch();
-        timer.start();
         list.stream()
                 .filter(n -> n > 999999)
                 .sorted(Comparator.comparingInt(o -> o))
                 .limit(9999999)
                 .collect(Collectors.toList());
-        timer.stop();
-        System.out.println("串行耗时：" + timer.getTotalTimeSeconds());
+        System.out.println("串行耗时：" + timer.elapsedTime());
 
 
         StopWatch timer2 = new StopWatch();
-        timer2.start();
         list.parallelStream()
                 .filter(n -> n > 999999)
                 .sorted(Comparator.comparingInt(o -> o))
                 .limit(9999999)
                 .collect(Collectors.toList());
-        timer2.stop();
-        System.out.println("并行耗时：" + timer.getTotalTimeSeconds());
+        System.out.println("并行耗时：" + timer.elapsedTime());
     }
 
 

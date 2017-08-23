@@ -25,7 +25,7 @@ public class ColorFactory extends AbstractShapAndColorFactory {
             case "BLUE":
                 return new Blue();
             default:
-                return null;
+                throw new IllegalArgumentException("invalid color:" + color);
         }
     }
 }

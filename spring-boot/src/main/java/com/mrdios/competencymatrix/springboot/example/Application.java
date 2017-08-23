@@ -16,7 +16,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @date 2016-11-24 16:27
  */
 @SpringBootApplication
-//@EnableScheduling
+@EnableScheduling
 @MapperScan("com.mrdios.competencymatrix.springboot.example.mybatis.*mapper")
 public class Application extends SpringBootServletInitializer {
     private static SpringApplication app;
