@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="logging" class="com.mrdios.competencymatrix.spring.aop.example.v_xml.Logging"/>
+
+    <bean id="student" class="com.mrdios.competencymatrix.spring.aop.example.v_xml.Student">
+        <property name="name" value="Tom"/>
+        <property name="age" value="11"/>
+    </bean>
+
+    <aop:config>
+        <!-- 定义日志的方面 -->
+        <aop:aspect id="logAspect" ref="logging">
+            <!-- 定义切入点,用来执行通知 -->
+            <aop:pointcut id="selectAll"
+                          expression="execution(* com.mrdios.competencymatrix.spring.aop.example.*.*(..))"/>
+            <!-- 前置通知 -->
+            <aop:before method="beforeAdvice" pointcut-ref="selectAll"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
