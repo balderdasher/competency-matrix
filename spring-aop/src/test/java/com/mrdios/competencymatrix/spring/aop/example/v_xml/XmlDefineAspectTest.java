@@ -14,14 +14,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application.xml")
-public class SpringAopTest {
+public class XmlDefineAspectTest {
     @Autowired
     private Student student;
 
     @Test
-    public void beforeAdvice() throws Exception {
+    public void testAdvices() throws Exception {
         student.getName();
-        student.getAge();
     }
 
+    @Test
+    public void AfterThrowingAdvice() throws Exception {
+        student.getAnException();
+    }
 }

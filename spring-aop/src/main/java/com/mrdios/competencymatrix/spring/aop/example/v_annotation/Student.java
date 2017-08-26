@@ -1,4 +1,4 @@
-package com.mrdios.competencymatrix.spring.aop.example.v_xml;
+package com.mrdios.competencymatrix.spring.aop.example.v_annotation;
 
 /**
  * @author mrdios
@@ -29,6 +29,10 @@ public class Student {
     public void getAnException() {
         System.out.println("[Student::throwAnException]：Exception happened.");
         throw new IllegalArgumentException();
+    }
+
+    public void save(Student student) {
+        System.out.println("[Student::save()]：" + student);
     }
 
     @Override

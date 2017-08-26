@@ -1,23 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="logging" class="com.mrdios.competencymatrix.spring.aop.example.v_xml.Logging"/>
+    <!-- 扫描上下文包，此处方便扫描Configuration注解的组件，Configuration注解的类同时也被Component注解-->
+    <context:component-scan base-package="com.mrdios.competencymatrix.spring.aop.example">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    </context:component-scan>
 
-    <bean id="student" class="com.mrdios.competencymatrix.spring.aop.example.v_xml.Student">
+    <bean id="logging_xml" class="com.mrdios.competencymatrix.spring.aop.example.v_xml.Logging"/>
+
+    <bean id="student_xml" class="com.mrdios.competencymatrix.spring.aop.example.v_xml.Student">
         <property name="name" value="Tom"/>
         <property name="age" value="11"/>
     </bean>
 
+    <!--<bean id="logging_anno" class="com.mrdios.competencymatrix.spring.aop.example.v_annotation.Logging"/>-->
+
+    <bean id="student_anno" class="com.mrdios.competencymatrix.spring.aop.example.v_annotation.Student">
+        <property name="name" value="Jerry"/>
+        <property name="age" value="9"/>
+    </bean>
+
+    <!-- 开启aspectj切面注解支持 -->
+    <aop:aspectj-autoproxy/>
+
     <aop:config>
         <!-- 定义日志的方面 -->
-        <aop:aspect id="logAspect" ref="logging">
-            <!-- 定义切入点,用来执行通知 -->
-            <aop:pointcut id="selectAll"
-                          expression="execution(* com.mrdios.competencymatrix.spring.aop.example.*.*(..))"/>
-            <!-- 前置通知 -->
-            <aop:before method="beforeAdvice" pointcut-ref="selectAll"/>
+        <aop:aspect id="logAspect" ref="logging_xml">
+
+            <!-- 定义一个get前缀方法运行的切入点,用来执行通知 -->
+            <aop:pointcut id="selectGet"
+                          expression="execution(* com.mrdios.competencymatrix.spring.aop.example.v_xml.*.get*(..))"/>
+
+            <!-- 前置通知：方法执行前运行通知 -->
+            <aop:before method="beforeAdvice" pointcut-ref="selectGet"/>
+
+            <!-- 后置通知：方法执行后运行通知 -->
+            <aop:after method="afterAdvice" pointcut-ref="selectGet"/>
+
+            <!-- 成功完成的后置通知：方法成功完成后执行通知 -->
+            <aop:after-returning method="afterReturningAdvice" pointcut-ref="selectGet"/>
+
+            <!-- 异常抛出后的后置通知：方法抛出异常退出完成后运行的通知-->
+            <aop:after-throwing method="afterThrowingAdvice" throwing="e" pointcut-ref="selectGet"/>
+
+            <!-- 环绕通知：方法执行前后运行的通知 -->
+            <aop:around method="aroundAdvice" pointcut-ref="selectGet"/>
         </aop:aspect>
     </aop:config>
 
