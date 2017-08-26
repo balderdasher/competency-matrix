@@ -16,16 +16,15 @@
         <property name="age" value="11"/>
     </bean>
 
-    <!--<bean id="logging_anno" class="com.mrdios.competencymatrix.spring.aop.example.v_annotation.Logging"/>-->
-
     <bean id="student_anno" class="com.mrdios.competencymatrix.spring.aop.example.v_annotation.Student">
         <property name="name" value="Jerry"/>
         <property name="age" value="9"/>
     </bean>
 
-    <!-- 开启aspectj切面注解支持 -->
+    <!-- 使用注解切面必须开启aspectj切面注解支持 -->
     <aop:aspectj-autoproxy/>
 
+    <!-- xml方式使用注解 -->
     <aop:config>
         <!-- 定义日志的方面 -->
         <aop:aspect id="logAspect" ref="logging_xml">
