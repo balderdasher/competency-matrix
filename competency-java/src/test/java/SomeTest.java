@@ -1,5 +1,8 @@
 import base.BaseTest;
 import org.junit.Test;
+import sun.misc.VM;
+
+import java.util.Arrays;
 
 /**
  * @author huxiong
@@ -85,5 +88,42 @@ public class SomeTest extends BaseTest {
             }
             return sb.toString();
         }
+    }
+
+    public <T> T[] reverseArray(T[] t) {
+        int lo = 0, hi = t.length - 1;
+        int mid = lo + (hi - lo) / 2;
+        for (int i = 0; i < mid; i++) {
+            T temp = t[i];
+            t[i] = t[hi - i];
+            t[hi - i] = temp;
+
+        }
+        return t;
+    }
+
+    @Test
+    public void testReverseArray() {
+        Integer[] a = {1, 2, 3, 4, 5};
+        a = reverseArray(a);
+        System.out.println(Arrays.toString(a));
+    }
+
+    @Test
+    public void testPrintArray() {
+        int[][] a = {{1, 2}, {3, 4, 5}};
+        for (int i = 0; i < a.length; i++) {
+            int[] item = a[i];
+            for (int j = 0; j < item.length; j++) {
+                System.out.print(item[j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(VM.isBooted());
+        String str = "hello world";
+        System.out.println(str.hashCode());
     }
 }
