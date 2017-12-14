@@ -15,13 +15,48 @@ public class JavaReferences {
 
     public static void checkQueue() {
         // 从队列中取出一个引用
-        Reference<? extends Entity> inq = rq.poll();
+        Reference<? extends Entity> inq = null;
+        inq = rq.poll();
         if (inq != null) {
             System.out.println("In queue: " + inq + " : " + inq.get());
         }
     }
 
-    public static void main(String[] args) {
+    public static void testReferences(ReferenceType type) {
+        Set<Object> set = new HashSet<>();
+        for (int i = 0; i < 5; i++) {
+            Reference<Entity> reference = null;
+            String entityId = type.toString() + ": " + i;
+            Entity strong = null;
+            switch (type) {
+                case SOFT:
+                    reference = new SoftReference<>(new Entity(entityId), rq);
+                    break;
+                case WEAK:
+                    reference = new WeakReference<>(new Entity(entityId), rq);
+                    break;
+                case PHANTOM:
+                    reference = new PhantomReference<>(new Entity(entityId), rq);
+                    break;
+                case STRONG:
+                    strong = new Entity(entityId);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unknown reference type..");
+            }
+            System.out.println("Just created: " + (type == ReferenceType.STRONG ? strong : reference.get() + reference.toString()));
+            set.add((type == ReferenceType.STRONG ? strong : reference));
+        }
+        System.gc();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        checkQueue();
+    }
+
+    public static void testRefs() {
         final int size = 10;
         // 创建10个Entity对象以及10个软引用
         Set<SoftReference<Entity>> sa = new HashSet<>();
@@ -54,10 +89,14 @@ public class JavaReferences {
         checkQueue();
     }
 
+    public static void main(String[] args) {
+        testReferences(ReferenceType.PHANTOM);
+    }
+
 
     private static class Entity {
-        private static final int SIZE = 1000;
-        private double[] d = new double[SIZE];
+        private static final int SIZE = 1024;
+        private byte[] d = new byte[SIZE * SIZE];
         private String id;
 
         public Entity(String id) {
@@ -73,5 +112,9 @@ public class JavaReferences {
         protected void finalize() throws Throwable {
             System.out.println("Finalizing " + id);
         }
+    }
+
+    static enum ReferenceType {
+        STRONG, SOFT, WEAK, PHANTOM
     }
 }
