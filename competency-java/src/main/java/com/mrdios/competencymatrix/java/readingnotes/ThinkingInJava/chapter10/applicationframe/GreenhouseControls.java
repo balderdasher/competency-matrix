@@ -151,7 +151,7 @@ public class GreenhouseControls extends Controller {
 
         @Override
         public String toString() {
-            return "System terminating";
+            return "System1 terminating";
         }
     }
 }

@@ -2,7 +2,9 @@ import base.BaseTest;
 import org.junit.Test;
 import sun.misc.VM;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author huxiong
@@ -119,6 +121,15 @@ public class SomeTest extends BaseTest {
             }
             System.out.println();
         }
+    }
+
+    @Test
+    public void testF() {
+        List<String> strs = new ArrayList<>();
+        strs.addAll(Arrays.asList("1", "2", "3"));
+        List<String> temp = strs;
+        strs = null;
+        System.out.println(temp);
     }
 
     public static void main(String[] args) {
