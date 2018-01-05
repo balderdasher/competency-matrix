@@ -24,7 +24,7 @@ public class RandomBounds {
     }
 
     public static void main(String[] args) {
-//        usage(new String[]{"lower"});
-        usage(new String[]{"upper"});
+        usage(new String[]{"lower"});
+//        usage(new String[]{"upper"});
     }
 }
