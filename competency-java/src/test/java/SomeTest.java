@@ -132,6 +132,23 @@ public class SomeTest extends BaseTest {
         System.out.println(temp);
     }
 
+    @Test
+    public void count1() {
+        int count = 0;
+        Integer j;
+        String s;
+        for (int i = 1; i < 100; i++) {
+            j = i;
+            s = j.toString();
+            for (int k = 0; k < s.length(); k++) {
+                if (s.charAt(k) == '1') {
+                    count++;
+                }
+            }
+        }
+        System.out.println(count);
+    }
+
     public static void main(String[] args) {
         System.out.println(VM.isBooted());
         String str = "hello world";

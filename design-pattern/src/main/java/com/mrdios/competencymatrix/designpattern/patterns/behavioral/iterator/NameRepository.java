@@ -4,26 +4,38 @@ package com.mrdios.competencymatrix.designpattern.patterns.behavioral.iterator;
  * @author huxiong
  * @date 2017-02-17 15:59
  */
-public class NameRepository implements Container {
-    public String[] names = {"Robert", "John", "Julie", "Lora"};
+public class NameRepository<T> implements Container<T> {
+    private Object[] datas;
+    private int size;
 
-    @Override
-    public Iterator getIterator() {
-        return new NameIterator();
+    public NameRepository(int length) {
+        datas = new Object[length];
     }
 
-    private class NameIterator implements Iterator {
+    public void add(T t) {
+        if (size >= datas.length) {
+            throw new IllegalStateException("The repository is already full.");
+        }
+        datas[size++] = t;
+    }
+
+    @Override
+    public Iterator<T> getIterator() {
+        return new NameIterator<>();
+    }
+
+    private class NameIterator<E> implements Iterator<E> {
         int index;
 
         @Override
         public boolean hasNext() {
-            return index < names.length;
+            return index < datas.length;
         }
 
         @Override
-        public Object next() {
+        public E next() {
             if (this.hasNext()) {
-                return names[index++];
+                return (E) datas[index++];
             }
             return null;
         }

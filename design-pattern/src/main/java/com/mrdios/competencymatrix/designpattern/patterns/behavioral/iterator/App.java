@@ -6,9 +6,12 @@ package com.mrdios.competencymatrix.designpattern.patterns.behavioral.iterator;
  */
 public class App {
     public static void main(String[] args) {
-        NameRepository nameRepository = new NameRepository();
-        for (Iterator iter = nameRepository.getIterator(); iter.hasNext(); ) {
-            String name = (String) iter.next();
+        NameRepository<String> nameRepository = new NameRepository<>(5);
+        for (int i = 0; i < 5; i++) {
+            nameRepository.add("string " + (i + 1));
+        }
+        for (Iterator<String> iter = nameRepository.getIterator(); iter.hasNext(); ) {
+            String name = iter.next();
             System.out.println("Name : " + name);
         }
     }
