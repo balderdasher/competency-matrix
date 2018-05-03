@@ -149,8 +149,16 @@ public class SomeTest extends BaseTest {
         System.out.println(count);
     }
 
+    @Test
+    public void testBase64(){
+        String html = "hello word";
+        String baseCode = String.valueOf(org.apache.commons.codec.binary.Base64.encodeBase64(html.getBytes()));
+        System.out.println(baseCode);
+    }
+
     public static void main(String[] args) {
         System.out.println(VM.isBooted());
+        System.getenv()
         String str = "hello world";
         System.out.println(str.hashCode());
     }
