@@ -1,6 +1,5 @@
-package com.mrdios.competencymatrix.java.api.java.lang;
+package com.mrdios.competencymatrix.java.api.lang;
 
-import java.lang.*;
 import java.lang.Object;
 
 /**

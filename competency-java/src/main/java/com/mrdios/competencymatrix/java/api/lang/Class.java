@@ -1,8 +1,6 @@
-package com.mrdios.competencymatrix.java.api.java.lang;
+package com.mrdios.competencymatrix.java.api.lang;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -34,7 +32,7 @@ public class Class {
 
     @Test
     public void testCast() {
-        Object object = new Object();
+        com.mrdios.competencymatrix.java.api.lang.Object object = new com.mrdios.competencymatrix.java.api.lang.Object();
         java.lang.Class c = Class.class;
     }
 

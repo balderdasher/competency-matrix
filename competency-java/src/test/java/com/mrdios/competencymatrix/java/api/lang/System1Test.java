@@ -1,9 +1,8 @@
-package com.mrdios.competencymatrix.java.api.java.lang;
+package com.mrdios.competencymatrix.java.api.lang;
 
 import org.junit.Test;
 
 import java.lang.Object;
-import java.lang.System;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Properties;

@@ -5,5 +5,9 @@ package com.mrdios.competencymatrix.java.readingnotes.ThinkingInJava.chapter10.e
  * @date 2016/06/28 23:51
  */
 class WithInner {
-    class Inner{}
+    class Inner {
+        public void say() {
+            System.out.println("hello");
+        }
+    }
 }

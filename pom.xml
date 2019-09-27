@@ -27,6 +27,7 @@
         <mybatis-spring.version>1.2.2</mybatis-spring.version>
         <!-- tools version setting -->
         <slf4j.version>1.7.7</slf4j.version>
+        <lombok.version>1.18.10</lombok.version>
         <!-- environment setting -->
         <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,6 +36,11 @@
 
     <dependencies>
         <!-- LOGGING -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>

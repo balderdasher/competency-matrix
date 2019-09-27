@@ -1,4 +1,4 @@
-package com.mrdios.competencymatrix.java.api.java.lang;
+package com.mrdios.competencymatrix.java.api.lang;
 
 /**
  * @author huxiong

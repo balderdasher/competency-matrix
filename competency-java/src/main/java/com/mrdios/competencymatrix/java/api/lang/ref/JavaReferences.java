@@ -1,4 +1,4 @@
-package com.mrdios.competencymatrix.java.api.java.lang.ref;
+package com.mrdios.competencymatrix.java.api.lang.ref;
 
 import java.lang.ref.*;
 import java.util.HashSet;
