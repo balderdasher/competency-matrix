@@ -107,7 +107,7 @@ public class StreamApiTest extends TestCase {
                 .sorted(Comparator.comparingInt(o -> o))
                 .limit(9999999)
                 .collect(Collectors.toList());
-        System.out.println("并行耗时：" + timer.elapsedTime());
+        System.out.println("并行耗时：" + timer2.elapsedTime());
     }
 
 
