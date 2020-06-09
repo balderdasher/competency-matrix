@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * @date 2017-06-14
  */
 public class ConnectionPool {
-    private LinkedList<Connection> pool = new LinkedList<>();
+    private final LinkedList<Connection> pool = new LinkedList<>();
 
     public ConnectionPool(int initialSize) {
         if (initialSize > 0) {
