@@ -16,6 +16,7 @@
         <module>concurrency</module>
         <module>java8-feature</module>
         <module>spring-aop</module>
+        <module>leetcode</module>
     </modules>
 
     <!-- 项目属性 -->
